@@ -3,11 +3,13 @@ import 'package:flutter/services.dart';
 import 'contants.dart';
 
 class LogInScreen extends StatefulWidget {
+  
   @override
   _LogInScreenState createState() => _LogInScreenState();
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +51,22 @@ class _LogInScreenState extends State<LogInScreen> {
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  SizedBox(height: 30.0),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Email',
+                        style: kLabelStyle,
+                      ),
+                      SizedBox(height: 10.0),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        height: 60.0,
+                      ),
+                    ],
                   ),
                 ],
               ),
