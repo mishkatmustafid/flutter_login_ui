@@ -242,12 +242,12 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
+      body: AnnotatedRegion<SystemUiOverlayStyle>(       //To darken the statusbar for contrast
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-                  child: Stack(
-            children: <Widget>[
+          onTap: () => FocusScope.of(context).unfocus(), //Gesture Detector added to unfocus screen when tapped anywhere
+                  child: Stack(                          // otherwise, the user would have to press 'back' everytime he 
+            children: <Widget>[                          // wanted to get rid of the keyboard
               Container(
                 height: double.infinity,
                 width: double.infinity,
@@ -261,7 +261,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       Color(0xFF478DE0),
                       Color(0xFF398AE5),
                     ],
-                    stops: [0.1, 0.4, 0.7, 0.9],
+                    stops: [0.1, 0.4, 0.7, 0.9],          //Percentile of the screen which is occupied by the colors. e.g. The second colors occupies from 0.1 to 0.4 percentile of the screen
                   ),
                 ),
               ),
