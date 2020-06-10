@@ -9,7 +9,37 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
-  
+  Widget _buildEmailTF(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Email',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            style: TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.email, 
+                color: Colors.white,
+              ),
+              hintText: 'Enter your Email',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,21 +83,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     ),
                   ),
                   SizedBox(height: 30.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Email',
-                        style: kLabelStyle,
-                      ),
-                      SizedBox(height: 10.0),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        decoration: kBoxDecorationStyle,
-                        height: 60.0,
-                      ),
-                    ],
-                  ),
+                  _buildEmailTF(),
                 ],
               ),
             ),
