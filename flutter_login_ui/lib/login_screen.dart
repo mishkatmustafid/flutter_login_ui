@@ -192,6 +192,25 @@ class _LogInScreenState extends State<LogInScreen> {
     );
   }
 
+  Widget _buildSocialBtnRow(){
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 30.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
+        children: [
+          _buildSocialBtn(
+            () => print('Login with Facebook'), 
+            AssetImage('assets/logos/facebook.jpg')
+          ),
+          _buildSocialBtn(
+            () => print('Login with Google'), 
+            AssetImage('assets/logos/google.jpg')
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -220,7 +239,7 @@ class _LogInScreenState extends State<LogInScreen> {
               physics: AlwaysScrollableScrollPhysics(),
               padding: EdgeInsets.symmetric(
                 horizontal: 40.0,
-                vertical: 120.0,
+                vertical: 80.0,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -242,20 +261,30 @@ class _LogInScreenState extends State<LogInScreen> {
                   _buildRememberMeChkBox(),
                   _buildLoginBtn(),
                   _buildSignInWith(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 30.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
-                      children: [
-                        _buildSocialBtn(
-                          () => print('Login with Facebook'), 
-                          AssetImage('assets/logos/facebook.jpg')
-                        ),
-                        _buildSocialBtn(
-                          () => print('Login with Google'), 
-                          AssetImage('assets/logos/google.jpg')
-                        ),
-                      ],
+                  _buildSocialBtnRow(),
+                  GestureDetector(
+                    onTap: () => print('Sign Up Button Pressed'),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Don\'t have an Account? ',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Sign Up',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
