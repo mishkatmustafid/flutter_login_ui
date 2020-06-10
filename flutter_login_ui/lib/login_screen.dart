@@ -9,7 +9,10 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
-  Widget _buildPasswordTF(){
+
+  bool _rememberMe = false;
+
+  Widget _buildEmailTF(){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -43,6 +46,82 @@ class _LogInScreenState extends State<LogInScreen> {
       ],
     );
   }
+  
+  Widget _buildPasswordTF(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Password',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans', 
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.lock, 
+                color: Colors.white,
+              ),
+              hintText: 'Enter your Password',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildForgotPassBtn(){
+    return Container(
+      alignment: Alignment.centerRight,
+      child: FlatButton(
+        onPressed: () => print('Forgot Password Button Pressed'), 
+        padding: EdgeInsets.only(right: 0.0),
+        child: Text(
+          'Forgot Password?',
+          style: kLabelStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRememberMeChkBox(){
+    return Container(
+      child: Row(
+        children: <Widget>[
+          Theme(
+            data: ThemeData(unselectedWidgetColor: Colors.white),
+            child: Checkbox(
+              value: _rememberMe,
+              checkColor: Colors.green,
+              activeColor: Colors.white,
+              onChanged: (value){
+                setState(() {
+                  _rememberMe = value;
+                });
+              },
+            ),
+          ),
+          Text(
+            'Remeber Me',
+            style: kLabelStyle,
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,40 +165,11 @@ class _LogInScreenState extends State<LogInScreen> {
                     ),
                   ),
                   SizedBox(height: 30.0),
-                  _buildPasswordTF(),
+                  _buildEmailTF(),
                   SizedBox(height: 30.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Password',
-                        style: kLabelStyle,
-                      ),
-                      SizedBox(height: 10.0),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        decoration: kBoxDecorationStyle,
-                        height: 60.0,
-                        child: TextField(
-                          obscureText: true,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'OpenSans', 
-                          ),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 14.0),
-                            prefixIcon: Icon(
-                              Icons.lock, 
-                              color: Colors.white,
-                            ),
-                            hintText: 'Enter your Password',
-                            hintStyle: kHintTextStyle,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  _buildPasswordTF(),
+                  _buildForgotPassBtn(),
+                  _buildRememberMeChkBox(),
                 ],
               ),
             ),
