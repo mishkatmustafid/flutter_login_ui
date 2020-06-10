@@ -98,6 +98,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   Widget _buildRememberMeChkBox(){
     return Container(
+      height: 20,
       child: Row(
         children: <Widget>[
           Theme(
@@ -118,6 +119,75 @@ class _LogInScreenState extends State<LogInScreen> {
             style: kLabelStyle,
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildLoginBtn(){
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: ()=> print('Login Button Pressed'),
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Colors.white,
+        child: Text(
+          'LOGIN',
+          style: TextStyle(
+            color: Color(0xFF527DAA),
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSignInWith(){
+    return Column(
+      children: [
+        Text(
+          '- OR -',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        SizedBox(height: 20),
+        Text(
+          'Sign in with',
+          style: kLabelStyle,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSocialBtn(Function onTap, AssetImage logo){
+    return GestureDetector(
+      onTap: () => onTap,
+      child: Container(
+        height: 60.0,
+        width: 60.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(0, 2),
+              blurRadius: 6.0,
+            ),
+          ],
+          image: DecorationImage(
+            image: logo,
+          ),
+        ),
       ),
     );
   }
@@ -170,6 +240,24 @@ class _LogInScreenState extends State<LogInScreen> {
                   _buildPasswordTF(),
                   _buildForgotPassBtn(),
                   _buildRememberMeChkBox(),
+                  _buildLoginBtn(),
+                  _buildSignInWith(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 30.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
+                      children: [
+                        _buildSocialBtn(
+                          () => print('Login with Facebook'), 
+                          AssetImage('assets/logos/facebook.jpg')
+                        ),
+                        _buildSocialBtn(
+                          () => print('Login with Google'), 
+                          AssetImage('assets/logos/google.jpg')
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
