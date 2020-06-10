@@ -221,7 +221,7 @@ class _LogInScreenState extends State<LogInScreen> {
               text: 'Don\'t have an Account? ',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 18,
+                fontSize: 15,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -229,7 +229,7 @@ class _LogInScreenState extends State<LogInScreen> {
               text: 'Sign Up',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 18,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -271,7 +271,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 80.0,
+                    vertical: 70.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -285,9 +285,9 @@ class _LogInScreenState extends State<LogInScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 20.0),
                       _buildEmailTF(),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 20.0),
                       _buildPasswordTF(),
                       _buildForgotPassBtn(),
                       _buildRememberMeChkBox(),
